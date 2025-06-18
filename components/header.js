@@ -11,10 +11,12 @@ function createHeader() {
             
             <div class="actions">
                 <div class="search-bar">
-                    <input class="input" type="text" placeholder="Sök produkter...">
-                    <button type="submit" aria-label="Search"> 
-                        <i class="fas fa-search"></i>
-                    </button>
+                    <form action="/" method="GET" style="display: flex; align-items: center;">
+                        <input class="input" type="text" name="q" placeholder="Sök produkter...">
+                        <button type="submit" aria-label="Search"> 
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
                 </div>
                 
                 <div class="action-buttons">
