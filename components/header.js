@@ -1,8 +1,11 @@
+const { createCartCounter } = require('./cartCounter');
+
 /**
  * genererar header component
+ * @param {Object} session - Express session för cart data
  * @returns {string} HTML header content
  */
-function createHeader() {
+function createHeader(session = {}) {
     return `
         <header class="header">
             <div class="logotype">
@@ -23,9 +26,7 @@ function createHeader() {
                     <a href="#" aria-label="Wishlist"> 
                         <i class="fas fa-heart"></i>
                     </a>
-                    <a href="/cart" aria-label="Shopping Basket">
-                        <i class="fas fa-shopping-basket"></i>
-                    </a>
+                    ${createCartCounter(session)}
                 </div>
             </div>
         </header>

@@ -45,9 +45,18 @@ function createProductDetail(product) {
                     </div>
                     
                     <div class="product-actions">
-                        <button class="add-to-cart-btn" ${product.stock_quantity === 0 ? 'disabled' : ''}>
-                            ${product.stock_quantity === 0 ? 'Slutsåld' : 'Lägg i varukorg'}
-                        </button>
+                        ${product.stock_quantity === 0 ? 
+                            '<button class="add-to-cart-btn" disabled>Slutsåld</button>' 
+                            : 
+                            `<form action="/cart/add" method="POST" style="display: inline;">
+                                <input type="hidden" name="productId" value="${product.id}">
+                                <div class="quantity-selector">
+                                    <label for="quantity">Antal:</label>
+                                    <input type="number" name="quantity" id="quantity" value="1" min="1" max="${product.stock_quantity}">
+                                </div>
+                                <button type="submit" class="add-to-cart-btn">Lägg i varukorg</button>
+                            </form>`
+                        }
                         <button class="wishlist-btn">
                             ♡ Lägg till önskelista
                         </button>

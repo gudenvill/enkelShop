@@ -8,9 +8,10 @@ const { createFooter } = require('./footer');
  * genererar hela HTML layout
  * @param {string} content - Main content HTML
  * @param {string} title - Page title
+ * @param {Object} session - Express session for cart data
  * @returns {string} Complete HTML page
  */
-function createLayout(content, title = 'EnkelShop') {
+function createLayout(content, title = 'EnkelShop', session = {}) {
     return `
         <!DOCTYPE html>
         <html lang="sv">
@@ -19,7 +20,7 @@ function createLayout(content, title = 'EnkelShop') {
         </head>
         <body>
             <div class="wrapper">
-                ${createHeader()}
+                ${createHeader(session)}
                 ${createNavigation()}
                 
                 <main>
