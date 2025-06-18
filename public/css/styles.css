@@ -1,0 +1,712 @@
+/* ============================================================================
+   ENKELSHOP - MAIN SHOP STYLES
+   ============================================================================ */
+
+/* Layout & Structure */
+.wrapper {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.header {
+    display: flex;
+    border: 1px solid black;
+    margin: 8px;
+    justify-content: space-between;
+}
+
+.logotype {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.actions {
+    border: 1px solid black;
+    margin: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.search-bar {
+    border: 1px solid black;
+    margin: 4px;
+}
+
+.input {
+    border: 1px solid black;
+    margin: 4px;
+}
+
+.action-buttons {
+    border: 1px solid black;
+    margin: 4px;
+    gap: 4px;
+    display: flex;
+}
+
+.cart-link {
+    
+}
+
+.cart-badge {
+}
+
+/* Navigation */
+.navigation-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/* Hero Section */
+.hero {
+    border: 1px solid black;
+    margin: 8px;
+    display: flex;
+    flex-direction: row;
+}
+
+.hero-image {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.hero-text {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+/* Product Display */
+.products-wrapper {
+    margin: 8px;
+}
+
+.products-grid {
+    display: grid;
+    margin: 8px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.product-card {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.product-image {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.new-badge {
+    border: 1px solid red;
+    margin: 8px;
+    color: red;
+}
+
+.product-info {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.brand {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.price {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+/* Product Detail Page */
+.product-detail-container {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.breadcrumb {
+    border: 1px solid black;
+    margin: 8px;
+    display: flex;
+    justify-content: start;
+    gap: 8px;
+}
+
+.product-detail {
+    border: 1px solid black;
+    margin: 8px;
+    display: flex;
+}
+
+.product-detail-image {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.detail-new-badge {
+    border: 1px solid red;
+    margin: 8px;
+    color: red;
+}
+
+.product-detail-info {
+    border: 1px solid black;
+    margin: 8px;
+    width: 100%;
+}
+
+.product-brand {
+    margin: 8px;
+}
+
+.product-sku {
+    margin: 8px;
+}
+
+.product-price {
+    margin: 8px;
+}
+
+.price-amount {
+    margin: 8px;
+}
+
+.product-description {
+    margin: 8px;
+}
+
+.product-stock {
+    margin: 8px;
+}
+
+.stock-status {
+    margin: 8px;
+}
+
+.stock-quantity {
+    margin: 8px;
+}
+
+.product-actions {
+    border: 1px solid black;
+    margin: 8px;
+    display: flex;
+    justify-content: start;
+    gap: 8px;
+}
+
+.add-to-cart-btn {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.quantity-selector {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.wishlist-btn {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.product-category {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.back-to-products {
+    margin: 16px;
+}
+
+/* Stock Status Classes */
+.stock-high {
+
+}
+
+.stock-medium {
+}
+
+.stock-low {
+}
+
+/* Cart Page */
+.cart-page {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.cart-header {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.cart-content {
+    border: 1px solid black;
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-items {
+    margin: 8px;
+}
+
+.cart-sidebar {
+    margin: 8px;
+}
+
+.continue-shopping {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+/* Empty Cart */
+.empty-cart {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.empty-cart-content {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.empty-cart-icon {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.empty-cart-actions {
+    margin: 8px;
+}
+
+.continue-shopping-btn {
+}
+
+/* Cart Items */
+.cart-item {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.cart-item-error {
+}
+
+.cart-item-error-content {
+}
+
+.cart-item-image {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.cart-item-details {
+    margin: 8px;
+}
+
+.cart-item-brand {
+    margin: 8px;
+}
+
+.cart-item-sku {
+    margin: 8px;
+}
+
+.cart-item-price {
+    margin: 8px;
+}
+
+.cart-item-quantity {
+    margin: 8px;
+}
+
+.quantity-form {
+    margin: 8px;
+}
+
+.quantity-controls {
+    
+}
+
+.quantity-input {
+}
+
+.update-btn {
+    margin: 8px;
+}
+
+.cart-item-total {
+    margin: 8px;
+}
+
+.item-total-price {
+    margin: 8px;
+}
+
+.cart-item-actions {
+    margin: 8px;
+}
+
+.remove-btn {
+    margin: 8px;
+}
+
+/* Cart Summary */
+.cart-summary {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.summary-line {
+    margin: 8px;
+}
+
+.shipping-info {
+    margin: 8px;
+}
+
+.summary-total {
+    margin: 8px;
+}
+
+.cart-actions {
+    margin: 8px;
+  
+}
+
+.checkout-btn {
+}
+
+.clear-cart-btn {
+}
+
+/* Order Summary */
+.order-summary {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.order-summary-empty {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.summary-items {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.summary-item {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.item-details {
+    margin: 8px;
+}
+
+.item-meta {
+    margin: 8px;
+}
+
+.item-quantity {
+    margin: 8px;
+}
+
+.item-price {
+    margin: 8px;
+}
+
+/* Checkout Form */
+.checkout-form {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.form-section {
+    margin: 8px;
+}
+
+.form-group {
+    margin: 8px;
+}
+
+.form-actions {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+/* Order Confirmation */
+.order-confirmation {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.confirmation-header {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.order-details {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.order-info {
+    margin: 8px;
+}
+
+.order-items {
+    margin: 8px;
+}
+
+.order-total {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.customer-details {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.confirmation-actions {
+    border: 1px solid black;
+    margin: 8px;
+}
+
+.confirmation-item {
+    
+}
+
+/* Perks Section */
+.perks-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px;
+}
+
+.perk-item {
+    margin: 8px;
+}
+
+.perk-icon {
+    margin: 8px;
+}
+
+.perk-text {
+    margin: 8px;
+}
+
+/* Search */
+.search-info {
+    
+}
+
+/* Buttons */
+.btn {
+}
+
+.btn-primary {
+}
+
+.btn-secondary {
+}
+
+/* FontAwesome Icons */
+.fas {
+}
+
+.fa-search {
+}
+
+.fa-heart {
+}
+
+.fa-shopping-basket {
+}
+
+.fa-trash {
+}
+
+.fa-solid {
+}
+
+.fa-earth-americas {
+}
+
+.fa-truck-fast {
+}
+
+.fa-shield {
+}
+
+.fa-face-smile {
+}
+
+/* ============================================================================
+   ENKELSHOP - ADMIN STYLES
+   ============================================================================ */
+
+/* Admin Layout */
+.admin-body {
+}
+
+.admin-header {
+}
+
+.admin-container {
+}
+
+.admin-title {
+}
+
+.admin-content {
+}
+
+/* Admin Navigation */
+.admin-nav {
+}
+
+.nav-container {
+}
+
+.back-to-store {
+}
+
+.nav-links {
+}
+
+.nav-link {
+}
+
+.nav-products {
+}
+
+.nav-orders {
+}
+
+/* Admin Pages */
+.admin-products-page {
+}
+
+.admin-orders-page {
+}
+
+.admin-error {
+}
+
+/* Admin Stats */
+.admin-stats {
+}
+
+.stats-grid {
+}
+
+.stat-item {
+}
+
+/* Product Table */
+.empty-state {
+}
+
+.product-table-container {
+}
+
+.table-header {
+}
+
+.table-wrapper {
+}
+
+.product-table {
+}
+
+.product-name {
+}
+
+.product-sku {
+}
+
+.product-price {
+}
+
+.actions {
+}
+
+.inline-form {
+}
+
+/* Order Table */
+.order-table-container {
+}
+
+.order-table {
+}
+
+.order-row {
+}
+
+.order-number {
+}
+
+.customer-info {
+}
+
+.order-total {
+}
+
+.status-select {
+}
+
+/* Status Classes */
+.status-pending {
+}
+
+.status-processing {
+}
+
+.status-shipped {
+}
+
+.status-completed {
+}
+
+.status-cancelled {
+}
+
+.status-active {
+}
+
+.status-inactive {
+}
+
+/* Admin Buttons */
+.btn {
+}
+
+.btn-add {
+}
+
+.btn-edit {
+}
+
+.btn-toggle {
+}
+
+.btn-delete {
+}
+
+.btn-view {
+}
+
+.btn-retry {
+}
+
+.btn-primary {
+}
+
+.btn-secondary {
+}
