@@ -7,6 +7,15 @@ const session = require('express-session');
 // Cart utils
 const { addToCart, removeFromCart, updateQuantity, getCart } = require('./services/cartService');
 
+// Hämta ADMIN
+const { createAdminLayout } = require('./admin/components/adminLayout');
+const { generateAdminProductsPage } = require('./admin/pages/adminProducts');
+const { generateAdminOrdersPage } = require('./admin/pages/adminOrders');
+const { 
+    createProduct, 
+    updateProduct, 
+    deleteProduct 
+} = require('./admin/services/adminProductService');
 
 // Hämta Componenter
 const { createLayout } = require('./components/layout');
@@ -192,7 +201,103 @@ app.post('/cart/update', (req, res) => {
     res.redirect('/cart');
 })
 
+//  --- ADMIN ENDPOINTS --- //
+
+// Admin Products Page
+app.get('/admin/products', (req, res) => {
+    try {
+        const adminContent = generateAdminProductsPage();
+        const html = createAdminLayout(adminContent, 'Produkthantering');
+        res.send(html);
+    } catch (error) {
+        console.error('Fel vid admin produktsida:', error);
+        res.status(500).send('Serverfel vid laddning av admin produkter');
+    }
+});
+
+// Admin Orders Page  
+app.get('/admin/orders', (req, res) => {
+    try {
+        const adminContent = generateAdminOrdersPage();
+        const html = createAdminLayout(adminContent, 'Orderhantering');
+        res.send(html);
+    } catch (error) {
+        console.error('Fel vid admin ordersida:', error);
+        res.status(500).send('Serverfel vid laddning av admin ordrar');
+    }
+});
+
+//  ---- ADMIN CRUD ROUTES    ---- //
+
+// Create Product (POST)
+app.post('/admin/products/create', (req, res) => {
+    const result = createProduct(req.body);
+    
+    if (result.success) {
+        console.log('✅ Ny produkt skapad:', result.product.name);
+        res.redirect('/admin/products?success=product-created');
+    } else {
+        console.error('❌ Fel vid produktskapande:', result.error);
+        res.redirect('/admin/products?error=' + encodeURIComponent(result.error));
+    }
+});
+
+// Update Product (POST)
+app.post('/admin/products/update/:id', (req, res) => {
+    const productId = req.params.id;
+    const result = updateProduct(productId, req.body);
+    
+    if (result.success) {
+        console.log('✅ Produkt uppdaterad:', result.product.name);
+        res.redirect('/admin/products?success=product-updated');
+    } else {
+        console.error('❌ Fel vid produktuppdatering:', result.error);
+        res.redirect('/admin/products?error=' + encodeURIComponent(result.error));
+    }
+});
+
+// Toggle Product Status (POST)
+app.post('/admin/products/toggle/:id', (req, res) => {
+    const productId = req.params.id;
+    
+    // Load product to get current status
+    const { loadAllProducts } = require('./admin/services/adminProductService');
+    const products = loadAllProducts();
+    const product = products.find(p => p.id === parseInt(productId));
+    
+    if (!product) {
+        return res.redirect('/admin/products?error=product-not-found');
+    }
+    
+    // Toggle the status
+    const result = updateProduct(productId, { is_active: !product.is_active });
+    
+    if (result.success) {
+        const statusText = result.product.is_active ? 'aktiverad' : 'inaktiverad';
+        console.log(`✅ Produkt ${statusText}:`, result.product.name);
+        res.redirect('/admin/products?success=product-status-updated');
+    } else {
+        console.error('❌ Fel vid statusändring:', result.error);
+        res.redirect('/admin/products?error=' + encodeURIComponent(result.error));
+    }
+});
+
+// Delete Product (POST) - Soft delete
+app.post('/admin/products/delete/:id', (req, res) => {
+    const productId = req.params.id;
+    const result = deleteProduct(productId);
+    
+    if (result.success) {
+        console.log('✅ Produkt inaktiverad:', result.message);
+        res.redirect('/admin/products?success=product-deleted');
+    } else {
+        console.error('❌ Fel vid produktborttagning:', result.error);
+        res.redirect('/admin/products?error=' + encodeURIComponent(result.error));
+    }
+});
+
 // Start server
 app.listen(PORT, () => {
     console.log(`📍 http://localhost:${PORT}`);
+    console.log(`🛠️  Admin: http://localhost:${PORT}/admin/products`);
 });

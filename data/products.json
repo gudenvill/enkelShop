@@ -1,41 +1,43 @@
 [
-    {
-      "id": 1,
-      "name": "Premium T-shirt",
-      "brand": "Levis",
-      "description": "Premium kvalitet t-shirt i mjuk bomull",
-      "price": 249.00,
-      "sku": "LEV001",
-      "image_url": "/images/tshirt-1.jpg",
-      "category": "tshirts",
-      "stock_quantity": 50,
-      "is_active": true,
-      "created_at": "2024-01-15T10:30:00Z"
-    },
-    {
-      "id": 2,
-      "name": "Blå Jeans",
-      "brand": "Levis", 
-      "description": "Klassiska blå jeans i premium denim",
-      "price": 599.00,
-      "sku": "LEV002",
-      "image_url": "/images/jeans-1.jpg",
-      "category": "byxor",
-      "stock_quantity": 30,
-      "is_active": true,
-      "created_at": "2024-01-14T14:20:00Z"
-    },
-    {
-      "id": 3,
-      "name": "Röd Hoodie",
-      "brand": "Nike",
-      "description": "Varm och bekväm hoodie för kallare dagar",
-      "price": 799.00,
-      "sku": "NIK001",
-      "image_url": "/images/hoodie-1.jpg",
-      "category": "tröjor",
-      "stock_quantity": 25,
-      "is_active": true,
-      "created_at": "2024-01-13T09:15:00Z"
-    }
-  ]
+  {
+    "id": 1,
+    "name": "Premium T-shirt",
+    "brand": "Levis",
+    "description": "Premium kvalitet t-shirt i mjuk bomull",
+    "price": 249,
+    "sku": "LEV001",
+    "image_url": "/images/tshirt-1.jpg",
+    "category": "tshirts",
+    "stock_quantity": 50,
+    "is_active": true,
+    "created_at": "2024-01-15T10:30:00Z",
+    "updated_at": "2025-06-18T19:17:11.245Z"
+  },
+  {
+    "id": 2,
+    "name": "Blå Jeans",
+    "brand": "Levis",
+    "description": "Klassiska blå jeans i premium denim",
+    "price": 599,
+    "sku": "LEV002",
+    "image_url": "/images/jeans-1.jpg",
+    "category": "byxor",
+    "stock_quantity": 30,
+    "is_active": true,
+    "created_at": "2024-01-14T14:20:00Z",
+    "updated_at": "2025-06-18T19:17:10.265Z"
+  },
+  {
+    "id": 3,
+    "name": "Röd Hoodie",
+    "brand": "Nike",
+    "description": "Varm och bekväm hoodie för kallare dagar",
+    "price": 799,
+    "sku": "NIK001",
+    "image_url": "/images/hoodie-1.jpg",
+    "category": "tröjor",
+    "stock_quantity": 25,
+    "is_active": true,
+    "created_at": "2024-01-13T09:15:00Z"
+  }
+]
