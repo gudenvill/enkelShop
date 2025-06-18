@@ -24,10 +24,17 @@ const { createLayout } = require('./components/layout');
 const { generateCartPage } = require('./pages/cart');
 const { generateHomepage } = require('./pages/homepage');
 const { generateProductDetailPage } = require('./pages/productDetail');
+const { generateCheckoutPage } = require('./pages/checkout');
+const { generateOrderConfirmationPage } = require('./pages/orderConfirmation');
+
 
 // Hämta Services
 const { loadProducts } = require('./services/productService');
 const { clearCart } = require('./services/cartService');
+const { createOrder, getOrderByNumber } = require('./services/orderService');
+const { updateOrderStatus } = require('./admin/services/adminOrderService');
+
+
 
 // Hämta Utils
 const { generateSearchResults } = require('./utils/searchUtils');
@@ -201,6 +208,51 @@ app.post('/cart/update', (req, res) => {
     res.redirect('/cart');
 })
 
+// Checkout Routes
+app.get('/checkout', (req, res) => {
+    const checkoutContent = generateCheckoutPage(req.session);
+    const html = createLayout(checkoutContent, 'Kassa | EnkelShop', req.session);
+    res.send(html);
+});
+
+// Process checkout
+app.post('/checkout/process', (req, res) => {
+    const cartItems = getCart(req.session);
+    
+    if (!cartItems || cartItems.length === 0) {
+        return res.redirect('/cart?error=empty-cart');
+    }
+    
+    const result = createOrder(req.body, cartItems);
+    
+    if (result.success) {
+        // Clear cart after successful order
+        req.session.cart = [];
+        console.log('✅ Order processed:', result.order.order_number);
+        res.redirect(`/order-confirmation/${result.order.order_number}`);
+    } else {
+        console.error('❌ Checkout error:', result.error);
+        res.redirect('/checkout?error=' + encodeURIComponent(result.error));
+    }
+});
+
+// Order confirmation page
+app.get('/order-confirmation/:orderNumber', (req, res) => {
+    const order = getOrderByNumber(req.params.orderNumber);
+    const confirmationContent = generateOrderConfirmationPage(order);
+    const html = createLayout(confirmationContent, 'Orderbekräftelse | EnkelShop', req.session);
+    res.send(html);
+});
+
+// Individual order view
+app.get('/order/:orderNumber', (req, res) => {
+    const order = getOrderByNumber(req.params.orderNumber);
+    const confirmationContent = generateOrderConfirmationPage(order);
+    const html = createLayout(confirmationContent, `Order ${req.params.orderNumber} | EnkelShop`, req.session);
+    res.send(html);
+});
+
+
 //  --- ADMIN ENDPOINTS --- //
 
 // Admin Products Page
@@ -224,6 +276,22 @@ app.get('/admin/orders', (req, res) => {
     } catch (error) {
         console.error('Fel vid admin ordersida:', error);
         res.status(500).send('Serverfel vid laddning av admin ordrar');
+    }
+});
+
+// Update order status
+app.post('/admin/orders/:orderNumber/status', express.json(), (req, res) => {
+    const { orderNumber } = req.params;
+    const { status } = req.body;
+    
+    const result = updateOrderStatus(orderNumber, status);
+    
+    if (result.success) {
+        console.log('✅ Order status updated:', orderNumber, '→', status);
+        res.json({ success: true });
+    } else {
+        console.error('❌ Order update error:', result.error);
+        res.status(500).json({ success: false, error: result.error });
     }
 });
 
