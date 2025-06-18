@@ -6,6 +6,7 @@ const fs = require('fs');
 // Hämta Componenter
 const { createLayout } = require('./components/layout');
 const { generateHomepage } = require('./pages/homepage');
+const { loadProducts } = require('./services/productService');
 
 // Init express
 const app = express();
@@ -34,10 +35,9 @@ app.get('/api/test', (req, res) => {
 });
 
 // Products API
-app.get('/api/product', (req, res) => {
+app.get('/api/products', (req, res) => {
     try {
-        const productsData = fs.readFileSync('./data/products.json', 'utf8');
-        const products = JSON.parse(productsData);
+        const products = loadProducts();
 
         res.json({
             success: true,

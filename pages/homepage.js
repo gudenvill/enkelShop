@@ -1,5 +1,7 @@
 // Landingsida genereras av alla componenter
 const { createHero } = require('../components/hero');
+const { createProductGrid } = require('../components/productGrid');
+const { loadProducts } = require('../services/productService');
 
 /**
  * generera hela landingsida main content
@@ -9,12 +11,11 @@ function generateHomepage() {
     // Hero section
     const heroSection = createHero();
 
+    // Ladda Produkter från JSON
+    const products = loadProducts();
+
     // Produkter section
-    const productSection = `
-        <div class="products-wrapper" id="products-container">
-            <div class="loading-message">Laddar produkter...</div>
-        </div>
-    `;
+    const productSection = createProductGrid(products)
 
     // Kombinerar Allt!
     return `
