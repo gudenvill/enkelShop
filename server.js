@@ -367,5 +367,5 @@ app.post('/admin/products/delete/:id', (req, res) => {
 // Start server
 app.listen(PORT, () => {
     console.log(`📍 http://localhost:${PORT}`);
-    console.log(`🛠️  Admin: http://localhost:${PORT}/admin/products`);
+    console.log(`🛠️  Admin kiresh ghashange: http://localhost:${PORT}/admin/products`);
 });
